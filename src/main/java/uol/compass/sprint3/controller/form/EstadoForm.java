@@ -4,7 +4,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import uol.compass.sprint3.config.validation.RegiaoEnumeration;
 import uol.compass.sprint3.model.Estado;
+import uol.compass.sprint3.model.Regiao;
 import uol.compass.sprint3.repository.EstadoRepository;
 
 public class EstadoForm {
@@ -15,9 +17,8 @@ public class EstadoForm {
     private String nome;
 
     @NotNull
-    @NotEmpty
-    private String regiao;
-
+    @RegiaoEnumeration(enumClass = Regiao.class)
+    private Regiao regiao;
     private Long populacao;
     private String capital;
     private double area;
@@ -30,11 +31,11 @@ public class EstadoForm {
         this.nome = nome;
     }
 
-    public String getRegiao() {
+    public Regiao getRegiao() {
         return regiao;
     }
 
-    public void setRegiao(String regiao) {
+    public void setRegiao(Regiao regiao) {
         this.regiao = regiao;
     }
 

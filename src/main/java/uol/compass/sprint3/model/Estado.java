@@ -1,9 +1,13 @@
 package uol.compass.sprint3.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import uol.compass.sprint3.config.validation.RegiaoEnumeration;
 
 @Entity
 public class Estado {
@@ -12,7 +16,9 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String regiao;
+    @Enumerated(EnumType.STRING)
+    @RegiaoEnumeration(enumClass = Regiao.class)
+    private Regiao regiao;
     private Long populacao;
     private String capital;
     private double area;
@@ -23,13 +29,14 @@ public class Estado {
 
     /**
      * Construtor da classe de unidades federativas, sem especificação de id.
-     * @param nome Nome da unidade federativa
-     * @param regiao Nome da região
+     *
+     * @param nome      Nome da unidade federativa
+     * @param regiao    Nome da região
      * @param populacao População total do Estado
-     * @param capital Nome da capital do Estado
-     * @param area Área total do Estado em km^2
+     * @param capital   Nome da capital do Estado
+     * @param area      Área total do Estado em km^2
      */
-    public Estado(String nome, String regiao, Long populacao, String capital, double area) {
+    public Estado(String nome, Regiao regiao, Long populacao, String capital, double area) {
         this.nome = nome;
         this.regiao = regiao;
         this.populacao = populacao;
@@ -70,11 +77,11 @@ public class Estado {
         this.nome = nome;
     }
 
-    public String getRegiao() {
+    public Regiao getRegiao() {
         return regiao;
     }
 
-    public void setRegiao(String regiao) {
+    public void setRegiao(Regiao regiao) {
         this.regiao = regiao;
     }
 

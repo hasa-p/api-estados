@@ -3,11 +3,12 @@ package uol.compass.sprint3.controller.dto;
 import org.springframework.data.domain.Page;
 
 import uol.compass.sprint3.model.Estado;
+import uol.compass.sprint3.model.Regiao;
 
 public class EstadoDto {
     private Long id;
     private String nome;
-    private String regiao;
+    private Regiao regiao;
     private Long populacao;
     private String capital;
     private double area;
@@ -29,7 +30,7 @@ public class EstadoDto {
         return nome;
     }
 
-    public String getRegiao() {
+    public Regiao getRegiao() {
         return regiao;
     }
 
