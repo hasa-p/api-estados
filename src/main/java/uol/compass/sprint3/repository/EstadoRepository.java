@@ -5,9 +5,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import uol.compass.sprint3.model.Estado;
+import uol.compass.sprint3.model.Regiao;
 
 public interface EstadoRepository extends JpaRepository<Estado, Long> {
 
-    Estado findByNome(String nome);
-    Page<Estado> findByNome(String nome, Pageable paginacao);
+    Estado findByRegiao(Regiao regiao);
+    Page<Estado> findByRegiao(Regiao regiao, Pageable paginacao);
 }

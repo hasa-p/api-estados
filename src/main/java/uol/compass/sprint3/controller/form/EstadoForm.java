@@ -4,7 +4,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import uol.compass.sprint3.config.validation.RegiaoEnumeration;
 import uol.compass.sprint3.model.Estado;
 import uol.compass.sprint3.model.Regiao;
 import uol.compass.sprint3.repository.EstadoRepository;
@@ -16,9 +15,10 @@ public class EstadoForm {
     @Size(min = 4)
     private String nome;
 
-    @NotNull
-    @RegiaoEnumeration(enumClass = Regiao.class)
+    @NotNull(message = "o nome da região deve ser um dos seguintes valores: "
+            + "''Centro-Oeste'', ''Nordeste'', ''Norte'', ''Sul'', ''Sudeste''")
     private Regiao regiao;
+
     private Long populacao;
     private String capital;
     private double area;

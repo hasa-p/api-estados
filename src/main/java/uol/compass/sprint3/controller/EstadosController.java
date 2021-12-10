@@ -26,32 +26,33 @@ import org.springframework.web.util.UriComponentsBuilder;
 import uol.compass.sprint3.controller.dto.EstadoDto;
 import uol.compass.sprint3.controller.form.EstadoForm;
 import uol.compass.sprint3.model.Estado;
+import uol.compass.sprint3.model.Regiao;
 import uol.compass.sprint3.repository.EstadoRepository;
 
 @RestController
-@RequestMapping("/estados")
+@RequestMapping("/api/states")
 public class EstadosController {
 
     @Autowired
     private EstadoRepository estadoRepository;
 
     @GetMapping
-    public Page<EstadoDto> listar(@RequestParam(required = false) String nome,
-            @PageableDefault(sort = "id", direction = Direction.ASC, page = 0, size = 5) Pageable paginacao) {
+    public Page<EstadoDto> listar(@RequestParam(required = false) String regiao,
+            @PageableDefault(sort = "id", direction = Direction.ASC, page = 0, size = Integer.MAX_VALUE) Pageable paginacao) {
 
         Page<Estado> estados;
 
-        if (nome == null) {
+        if (regiao == null) {
             estados = estadoRepository.findAll(paginacao);
         } else {
-            estados = estadoRepository.findByNome(nome, paginacao);
+            estados = estadoRepository.findByRegiao(Regiao.forValues(regiao), paginacao);
         }
 
         return EstadoDto.converter(estados);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EstadoDto> expand(@PathVariable Long id) {
+    public ResponseEntity<EstadoDto> expand(@Valid @PathVariable Long id) {
         Optional<Estado> estado = estadoRepository.findById(id);
 
         if (estado.isPresent()) {

@@ -9,19 +9,20 @@ import static java.lang.annotation.ElementType.CONSTRUCTOR;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, CONSTRUCTOR })
+@Documented
+@Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, CONSTRUCTOR, TYPE_USE })
 @Retention(RUNTIME)
 @Constraint(validatedBy = RegiaoEnumValidation.class)
-@Documented
 public @interface RegiaoEnumeration {
 
-    String message() default "{uol.compass.sprint3.config.validation.RegiaoEnumeration.message}";
-    Class<?>[] groups() default { };
-    Class<? extends Payload>[] payload() default { };
     Class<? extends Enum<?>> enumClass();
+    String message() default "must be any of enum {enumClass}";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
 }

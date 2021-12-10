@@ -7,18 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import uol.compass.sprint3.config.validation.RegiaoEnumeration;
-
 @Entity
 public class Estado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     @Enumerated(EnumType.STRING)
-    @RegiaoEnumeration(enumClass = Regiao.class)
     private Regiao regiao;
+
     private Long populacao;
     private String capital;
     private double area;
