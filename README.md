@@ -23,8 +23,8 @@ filtragem e tratamento de erros não funcionarão conforme a especificação ori
 
 ## Operações
 
-A documentação completa da API em Swagger, conforme as especificações originais,
-pode ser acessada [**aqui**](https://github.com/pedro-as/compass-sprint3/tree/main/swagger-doc).
+A documentação completa da API em Swagger está no diretório `swagger-doc/` e pode ser
+acessada diretamente [**aqui**](https://github.com/pedro-as/compass-sprint3/tree/main/swagger-doc).
 
 A seguir estão os exemplos simplificados de requisições e respostas da API.
 
