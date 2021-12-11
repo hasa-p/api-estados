@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "API de Estados Brasileiros",
-    "description": "Esta API foi desenvolvida para a trilha de desenvolvimento em Spring Boot da Compass.Uol. A interface permite ao usuário criar, recuperar, atualizar e remover dados de Estados brasileiros em um banco de dados H2 local. Uma API de testes foi incluída, utilizando a ferramenta mockAPI, e permite testar as operações com algumas restrições — ordenação, filtragem e tratamento de erros não funcionarão conforme a especificação original.",
+    "description": "Esta API foi desenvolvida para a trilha de desenvolvimento em Spring Boot da Compass.Uol. A interface permite ao usuário criar, recuperar, atualizar e remover dados de Estados brasileiros em um banco de dados H2 local.",
     "version": "0.0.1",
     "termsOfService": "https://github.com/pedro-as/compass-sprint3/blob/main/README.md",
     "license": {
@@ -21,10 +21,6 @@
     {
       "url": "http://localhost:8080",
       "description": "API local"
-    },
-    {
-      "url": "https://61b3d05baf5ff70017ca2098.mockapi.io",
-      "description": "API de testes"
     }
   ],
   "paths": {
