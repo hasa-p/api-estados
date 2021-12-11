@@ -1,15 +1,14 @@
 openapi: 3.0.1
 info:
   title: API de Estados Brasileiros
-  description: Esta API foi desenvolvida em Spring Boot e permite ao usuário criar, recuperar, atualizar e remover dados de Estados brasileiros em um banco de dados H2 local.
+  description: Esta API foi desenvolvida para a trilha de desenvolvimento em Spring Boot da Compass.Uol. A interface permite ao usuário criar, recuperar, atualizar e remover dados de Estados brasileiros em um banco de dados H2 local. Uma API de testes foi incluída, utilizando a ferramenta mockAPI, e permite testar as operações com algumas restrições — ordenação, filtragem e tratamento de erros não funcionarão conforme a especificação original.
   version: 0.0.1
   termsOfService: https://github.com/pedro-as/compass-sprint3/blob/main/README.md
-  contact:
-    name: API support
-    email: amorimp@pm.me
   license:
     name: GPLv3
     url: https://www.gnu.org/licenses/gpl-3.0.en.html
+  contact:
+    email: amorimp@pm.me
 externalDocs:
   description: Source code
   url: https://github.com/pedro-as/compass-sprint3/

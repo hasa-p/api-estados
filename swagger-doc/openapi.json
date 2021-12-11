@@ -1,0 +1,313 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API de Estados Brasileiros",
+    "description": "Esta API foi desenvolvida para a trilha de desenvolvimento em Spring Boot da Compass.Uol. A interface permite ao usuário criar, recuperar, atualizar e remover dados de Estados brasileiros em um banco de dados H2 local. Uma API de testes foi incluída, utilizando a ferramenta mockAPI, e permite testar as operações com algumas restrições — ordenação, filtragem e tratamento de erros não funcionarão conforme a especificação original.",
+    "version": "0.0.1",
+    "termsOfService": "https://github.com/pedro-as/compass-sprint3/blob/main/README.md",
+    "license": {
+      "name": "GPLv3",
+      "url": "https://www.gnu.org/licenses/gpl-3.0.en.html"
+    },
+    "contact": {
+      "email": "amorimp@pm.me"
+    }
+  },
+  "externalDocs": {
+    "description": "Source code",
+    "url": "https://github.com/pedro-as/compass-sprint3/"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "API local"
+    },
+    {
+      "url": "https://61b3d05baf5ff70017ca2098.mockapi.io",
+      "description": "API de testes"
+    }
+  ],
+  "paths": {
+    "/api/states": {
+      "get": {
+        "summary": "Lista todos os Estados",
+        "parameters": [
+          {
+            "name": "regiao",
+            "in": "query",
+            "description": "Filtrar por nome da região.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Centro-Oeste",
+                "Nordeste",
+                "Norte",
+                "Sudeste",
+                "Sul"
+              ]
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Ordenar de forma decrescente por população ou por área.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "populacao,desc",
+                "area,desc"
+              ]
+            },
+            "style": "form",
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estados"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Operações básicas"
+        ]
+      },
+      "post": {
+        "summary": "Cadastra um novo Estado",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Estado_no-id"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Estado cadastrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Operações básicas"
+        ]
+      }
+    },
+    "/api/states/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Recupera um Estado por ID",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ID não encontrado",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Operações básicas"
+        ]
+      },
+      "put": {
+        "summary": "Atualiza um Estado por ID",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Estado_no-id"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Estado atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ID não encontrado",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Operações básicas"
+        ]
+      },
+      "delete": {
+        "summary": "Remove um Estado por ID",
+        "responses": {
+          "200": {
+            "description": "Estado removido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Estado"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ID não encontrado",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Operações básicas"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Estado": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nome": {
+            "type": "string",
+            "minLength": 4
+          },
+          "regiao": {
+            "type": "string",
+            "enum": [
+              "Centro-Oeste",
+              "Nordeste",
+              "Norte",
+              "Sudeste",
+              "Sul"
+            ]
+          },
+          "populacao": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "capital": {
+            "type": "string"
+          },
+          "area": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "nome",
+          "regiao"
+        ],
+        "example": {
+          "id": 13,
+          "nome": "Pernambuco",
+          "regiao": "Nordeste",
+          "populacao": 9674793,
+          "capital": "Recife",
+          "area": 98067.88
+        }
+      },
+      "Estado_no-id": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "minLength": 4
+          },
+          "regiao": {
+            "type": "string",
+            "enum": [
+              "Centro-Oeste",
+              "Nordeste",
+              "Norte",
+              "Sudeste",
+              "Sul"
+            ]
+          },
+          "populacao": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "capital": {
+            "type": "string"
+          },
+          "area": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "nome",
+          "regiao"
+        ],
+        "example": {
+          "nome": "Pernambuco",
+          "regiao": "Nordeste",
+          "populacao": 9674793,
+          "capital": "Recife",
+          "area": 98067.88
+        }
+      },
+      "Estados": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Estado"
+        }
+      }
+    }
+  }
+}
