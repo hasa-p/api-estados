@@ -93,7 +93,7 @@ public class EstadosController {
 
         if (optional.isPresent()) {
             estadoRepository.deleteById(id);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok(new EstadoDto(optional.get()));
         }
 
         return ResponseEntity.notFound().build();

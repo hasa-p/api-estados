@@ -167,11 +167,11 @@ components:
       - regiao
       example:
         id: 13
-        nome: Minas Gerais
-        regiao: Sudeste
-        populacao: 21411923
-        capital: Belo Horizonte
-        area: 586513.993
+        nome: Pernambuco
+        regiao: Nordeste
+        populacao: 9674793
+        capital: Recife
+        area: 98067.88
     Estado_no-id:
       type: object
       properties:
@@ -200,11 +200,11 @@ components:
       - nome
       - regiao
       example:
-        nome: Minas Gerais
-        regiao: Sudeste
-        populacao: 21411923
-        capital: Belo Horizonte
-        area: 586513.993
+        nome: Pernambuco
+        regiao: Nordeste
+        populacao: 9674793
+        capital: Recife
+        area: 98067.88
     Estados:
       type: array
       items:

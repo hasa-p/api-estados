@@ -1,5 +1,6 @@
 package uol.compass.sprint3.controller.form;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,8 +20,12 @@ public class EstadoForm {
             + "''Centro-Oeste'', ''Nordeste'', ''Norte'', ''Sul'', ''Sudeste''")
     private Regiao regiao;
 
+    @Min(0)
     private Long populacao;
+
     private String capital;
+
+    @Min(0)
     private double area;
 
     public String getNome() {
