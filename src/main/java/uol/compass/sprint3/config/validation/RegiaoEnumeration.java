@@ -15,6 +15,19 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+import uol.compass.sprint3.controller.form.EstadoForm;
+import uol.compass.sprint3.model.Regiao;
+
+/**
+ * Anotação personalizada para validação de valores de região recebidos via
+ * camada de API junto ao enum {@link Regiao}.
+ *
+ * @deprecated Esta anotação não é utilizada na API e a validação é feita
+ *             diretamente em {@link EstadoForm} e {@link Regiao}.
+ *
+ * @author Pedro Amorim
+ */
+@Deprecated
 @Documented
 @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, CONSTRUCTOR, TYPE_USE })
 @Retention(RUNTIME)
@@ -22,7 +35,10 @@ import javax.validation.Payload;
 public @interface RegiaoEnumeration {
 
     Class<? extends Enum<?>> enumClass();
+
     String message() default "must be any of enum {enumClass}";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

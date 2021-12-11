@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * API.
  *
  * @author Pedro Amorim
- *
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Regiao {
@@ -23,7 +22,7 @@ public enum Regiao {
     /**
      * Define o valor em String do nome.
      *
-     * @param valor String com o nome da região
+     * @param valor String com o nome da região.
      */
     Regiao(String valor) {
         this.valor = valor;
@@ -32,7 +31,7 @@ public enum Regiao {
     /**
      * Devolve o nome padronizado para serialização e criação de um objeto JSON.
      *
-     * @return String com o nome da região
+     * @return String com o nome da região.
      */
     @JsonValue
     public String getValor() {
@@ -43,7 +42,8 @@ public enum Regiao {
      * Serializa e vincula uma String à sua respectiva constante Enum.
      *
      * @param valor Nome da região obtido no campo "regiao".
-     * @return Enum associado à String, se seus valores forem iguais; caso contrário, {@code null}
+     * @return Enum associado à String, se seus valores forem iguais; caso
+     *         contrário, {@code null}.
      */
     @JsonCreator(mode = JsonCreator.Mode.DELEGATING)
     public static Regiao forValues(@JsonProperty("regiao") String valor) {

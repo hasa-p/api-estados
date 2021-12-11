@@ -8,10 +8,9 @@ import uol.compass.sprint3.model.Estado;
 import uol.compass.sprint3.model.Regiao;
 
 /**
- * Repositório de domínio para persistência de objetos {@code Estado}.
+ * Repositório de domínio para persistência de objetos {@link Estado}.
  *
  * @author Pedro Amorim
- *
  */
 public interface EstadoRepository extends JpaRepository<Estado, Long> {
 
