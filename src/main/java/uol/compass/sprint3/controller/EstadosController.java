@@ -29,6 +29,12 @@ import uol.compass.sprint3.model.Estado;
 import uol.compass.sprint3.model.Regiao;
 import uol.compass.sprint3.repository.EstadoRepository;
 
+/**
+ * Controlador REST para gerenciamento de requisições e respostas da API.
+ *
+ * @author Pedro Amorim
+ *
+ */
 @RestController
 @RequestMapping("/api/states")
 public class EstadosController {
@@ -36,6 +42,17 @@ public class EstadosController {
     @Autowired
     private EstadoRepository estadoRepository;
 
+    /**
+     * Controla requisições do método GET e retorna uma página de resultados.
+     *
+     * @param regiao    Parâmetro de consulta opcional na requisição para filtragem
+     *                  dos resultados por região.
+     * @param paginacao Parâmetros de paginação e ordenação.
+     * @return {@code Page} de resultados.
+     *
+     * @see {@link org.springframework.data.domain.Page}
+     * @see {@link org.springframework.data.domain.Pageable}
+     */
     @GetMapping
     public Page<EstadoDto> listar(@RequestParam(required = false) String regiao,
             @PageableDefault(sort = "id", direction = Direction.ASC, page = 0, size = Integer.MAX_VALUE) Pageable paginacao) {
