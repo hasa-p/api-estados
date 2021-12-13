@@ -12,6 +12,9 @@ A interface permite ao usuário criar, recuperar, atualizar e remover dados de E
 brasileiros em um banco de dados H2 local. A aplicação deve ser executada por meio do
 arquivo `EstadoApplication.java`.
 
+O funcionamento da API, na Swagger UI, pode ser visualizado nesta
+[demonstração em vídeo](https://www.youtube.com/watch?v=6le4T7e6krU).
+
 ## Utilização da API
 
 A aplicação pode ser utilizada localmente (em `localhost:8080`), com o
